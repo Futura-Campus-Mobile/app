@@ -1,0 +1,27 @@
+{
+    "user": {
+        "name": "Pedro Silva",
+        "email": "pedro@teste.com",
+        "password": "25414540709124050347d150085a22caa79b15b23da75c4f1c4626bad493664d",
+        "devices": [
+            {
+                "id": "0",
+                "model": "f1.0",
+                "currentLabel": "0",
+                "isOn": true
+            }
+        ],
+        "labels": [
+            { 
+                "id": "0",
+                "name": "Ar condicionado",
+                "createdAt": 1578400358797
+            },
+            {
+                "id": "1",
+                "name": "Forno elétrico",
+                "createdAt": 1578400358920
+            }
+        ]
+    }
+}
