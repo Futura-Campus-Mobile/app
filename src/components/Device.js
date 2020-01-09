@@ -1,7 +1,8 @@
 import React from 'react'
+
 import { TouchableOpacity, Text } from 'react-native'
 
-export default Label = ({ onPress, name=""  }) => (
+export default Device = ({ onPress, name=""  }) => (
     <TouchableOpacity
         style={{
             padding: 10,

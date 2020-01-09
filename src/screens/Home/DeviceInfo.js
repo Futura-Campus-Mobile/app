@@ -1,14 +1,14 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-export default class LabelInfo extends React.Component {
+export default class DeviceInfo extends React.Component {
   static navigationOptions = ({ navigation }) => ({
-    title: navigation.state.params.label.name,
+    title: navigation.state.params.device.name,
   })
 
   render(){
     const { navigation } = this.props
-    const { label } = navigation.state.params
+    const { device } = navigation.state.params
 
     const styles = StyleSheet.create({
       container: {
@@ -21,7 +21,7 @@ export default class LabelInfo extends React.Component {
 
     return (
       <View style={styles.container}>
-        <Text>createdAt: {new Date(label.createdAt).toLocaleDateString()}</Text>
+        <Text>createdAt: {new Date(device.createdAt).toLocaleDateString()}</Text>
       </View>
     );
   }

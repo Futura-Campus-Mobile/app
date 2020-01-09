@@ -1,22 +1,28 @@
 import React from 'react'
 
-import HomeScreen from './src/screens/App/Home'
-import LabelInfoScreen from './src/screens/App/LabelInfo'
-import AuthLoadingScreen from './src/screens/Auth/AuthLoading'
-import SignInScreen from './src/screens/Auth/SignIn'
+import WelcomeScreen from './src/screens/Welcome'
+import SignInScreen from './src/screens/SignIn'
+import HomeStack from './src/screens/Home'
 
 import { createAppContainer, createSwitchNavigator } from 'react-navigation'
-import { createStackNavigator } from 'react-navigation-stack'
 
-const AppStack = createStackNavigator({ Home: HomeScreen, LabelInfo: LabelInfoScreen })
-const AuthStack = createStackNavigator({ SignIn: SignInScreen })
+import { UserProvider } from "./src/providers/User"
 
-const RootStack = createSwitchNavigator(
+const RootNavigator = createSwitchNavigator(
   {
-    AuthLoading: AuthLoadingScreen,
-    Auth: AuthStack, App: AppStack
+    Welcome: WelcomeScreen,
+    SignIn: SignInScreen,
+    Home: HomeStack,
   },
-  { initialRouteName: 'AuthLoading' }
+  {
+    initialRouteName: 'Welcome',
+  }
 )
 
-export default createAppContainer(RootStack)
+const AppContainer = createAppContainer(RootNavigator)
+
+export default () => (
+  <UserProvider>
+    <AppContainer />
+  </UserProvider>
+)
