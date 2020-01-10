@@ -50,13 +50,15 @@ export default class Home extends React.Component {
             Adicione o primeiro para continuar
           </Text>}
 
-        <View>
+        <View >
           <VerTodosContainer text="Seus dispositivos" />
-          {user.devices.map(device => (<Device
-            key={device.id}
-            name={device.name}
-            onPress={() => navigation.navigate('DeviceInfo', { device })}
-          />))}
+          <View style={{flexDirection:"row",flexWrap:"wrap", justifyContent:"space-between"}}> 
+            {user.devices.map(device => (<Device
+              key={device.id}
+              name={device.name}
+              onPress={() => navigation.navigate('DeviceInfo', { device })}
+            />))}
+          </View>
         </View>
 
         <View>
