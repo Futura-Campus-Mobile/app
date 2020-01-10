@@ -1,3 +1,5 @@
+import React from 'react'
+
 import HomeScreen from './Home'
 import ProfileScreen from './Profile'
 import OverviewScreen from './Overview'
@@ -5,18 +7,35 @@ import DeviceInfoScreen from './DeviceInfo'
 import DeviceEditScreen from './DeviceEdit'
 import PlugEditScreen from './PlugEdit'
 
-import { createStackNavigator } from 'react-navigation-stack'
+import TabBar from '../../components/TabBar'
+import StackNavigatorHeader from '../../components/StackNavigationHeader'
 
-export default createStackNavigator(
+import { createStackNavigator } from 'react-navigation-stack'
+import { createBottomTabNavigator } from 'react-navigation-tabs'
+
+const HomeTab = createBottomTabNavigator(
   {
     Home: HomeScreen,
     Profile: ProfileScreen,
-    Overview: OverviewScreen,
+    Overview: OverviewScreen
+  }, 
+  {
+    initialRouteName: 'Home',
+    tabBarComponent: props => <TabBar {...props}/>,
+  }
+)
+
+export default createStackNavigator(
+  {
+    Home: HomeTab,
     DeviceInfo: DeviceInfoScreen,
     PlugEdit: PlugEditScreen,
     DeviceEdit: DeviceEditScreen,
   },
   {
-    initialRouteName: 'Home'
+    initialRouteName: 'Home',
+    defaultNavigationOptions: {
+      header: props => <StackNavigatorHeader {...props}/>,
+    }
   }
 )
