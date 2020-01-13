@@ -107,7 +107,7 @@ export default class TabBar extends React.Component {
                         iconName="equalizer"
                         text="Overview"
                         selected={isActiveRoute('Overview')}
-                        onPress={() => navigation.navigate('Overview')}
+                        onPress={() => this.state.showActionBar === true ? ( _toggleActionBar(), navigation.navigate('Overview') ) : navigation.navigate('Overview')}
                     />
                     <TouchableOpacity style={{ ...styles.fabButton, backgroundColor: isActiveRoute('Home') ? '#9510AC' : '#2D9BF0' }} onPress={() => isActiveRoute('Home') ? _toggleActionBar() : navigation.navigate('Home')}>
                         <Icon name={_fabIconName()} color="#fff" size={40}></Icon>
@@ -116,7 +116,7 @@ export default class TabBar extends React.Component {
                         iconName="person-outline"
                         text="Profile"
                         selected={isActiveRoute('Profile')}
-                        onPress={() => navigation.navigate('Profile')}
+                        onPress={() => this.state.showActionBar === true ? ( _toggleActionBar(), navigation.navigate('Profile') ) : navigation.navigate('Profile')}
                     />
                 </View>
             </View>

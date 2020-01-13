@@ -14,8 +14,9 @@ export default Device = ({ onPress, name="", color="black"  }) => (
         }}
         onPress={onPress}
     >
-        <Text style={{color:color, fontSize:16, fontWeight:"700"}}>{name}</Text>
+        <Text style={{color:"black", fontSize:16, fontWeight:"700"}}>{name}</Text>
         <Text style={{color:"grey", marginTop:10}}>14 horas ligado  </Text>
         <Text style={{color:"grey", marginTop:10}}>60 reais consumidos  </Text>
+        <Text style={{color:"black", alignSelf:'flex-end', paddingRight:10, top: "98%", position:'absolute'}}>Ver mais...</Text>
     </TouchableOpacity>
 )
