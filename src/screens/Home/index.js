@@ -1,6 +1,7 @@
 import React from 'react'
 
 import HomeScreen from './Home'
+import MyHomeScreen from './MyHome'
 import ProfileScreen from './Profile'
 import OverviewScreen from './Overview'
 import DeviceInfoScreen from './DeviceInfo'
@@ -15,7 +16,7 @@ import { createBottomTabNavigator } from 'react-navigation-tabs'
 
 const HomeTab = createBottomTabNavigator(
   {
-    Home: HomeScreen,
+    Home: MyHomeScreen,
     Profile: ProfileScreen,
     Overview: OverviewScreen
   }, 

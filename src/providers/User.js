@@ -1,9 +1,10 @@
 import React from 'react'
 
-export default UserContext = React.createContext()
+export const Context = React.createContext()
 
-export class UserProvider extends React.Component {
+export class Provider extends React.Component {
     state = {
+        uid: "123",
         name: "Pedro",
         email: "pedro@teste.com",
         password: "25414540709124050347d150085a22caa79b15b23da75c4f1c4626bad493664d",
@@ -22,7 +23,7 @@ export class UserProvider extends React.Component {
         },
         {
             "id": 2,
-            "name": "Microondas",
+            "name": "Micro-ondas",
             "color":"#FF705E",
             "createdAt": 1578400358920
         }
@@ -47,14 +48,14 @@ export class UserProvider extends React.Component {
             }
 
             this.setState({ plugs: [...this.state.plugs, plug] })
-        }
+        },
     }
 
     render() {
         return (
-            <UserContext.Provider value={this.state}>
+            <Context.Provider value={this.state}>
                 {this.props.children}
-            </UserContext.Provider>
+            </Context.Provider>
         )
     }
 }

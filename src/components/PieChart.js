@@ -1,7 +1,7 @@
 import React from 'react'
 import { PieChart } from 'react-native-svg-charts'
 import { View, Text, Dimensions } from 'react-native';
-import UserContext from '../providers/User'
+import { Context as UserContext } from '../providers/User'
 
 export default class GeneralPieChart extends React.PureComponent {
     constructor(props) {

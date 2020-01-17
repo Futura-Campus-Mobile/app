@@ -9,7 +9,8 @@ import HomeStack from './src/screens/Home'
 
 import { createAppContainer, createSwitchNavigator } from 'react-navigation'
 
-import { UserProvider } from "./src/providers/User"
+import { Provider as UserProvider } from "./src/providers/User"
+import { Provider as EstimatesProvider } from './src/providers/Estimates'
 
 const RootNavigator = createSwitchNavigator(
   {
@@ -31,7 +32,7 @@ export default class App extends React.Component {
 
   async componentDidMount(){
     await ExpoFont.loadAsync({
-      'open-sans-bold': require('../../assets/fonts/OpenSans-Bold.ttf'),
+      'open-sans-bold': require('./assets/fonts/opensans/OpenSans-Bold.ttf'),
     })
 
     this.setState({ assetsLoaded: true })
@@ -42,7 +43,9 @@ export default class App extends React.Component {
 
     return assetsLoaded ? (
       <UserProvider>
-        <AppContainer />
+        <EstimatesProvider>
+          <AppContainer/>
+        </EstimatesProvider>
       </UserProvider>
     ) : (
       <View>

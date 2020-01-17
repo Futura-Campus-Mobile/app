@@ -5,9 +5,8 @@ import { Text, View, StyleSheet, SafeAreaView, ScrollView, Dimensions } from 're
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
 import Device from '../../components/Device'
-import Font from '../../components/Font'
 
-import UserContext from '../../providers/User'
+import { Context as UserContext } from '../../providers/User'
 
 const styles = StyleSheet.create({
   SafeAreaView:{
@@ -20,7 +19,8 @@ const styles = StyleSheet.create({
     marginBottom: 20
   },
   helloText: {
-    fontSize: 40
+    fontSize: 40,
+    fontFamily: 'open-sans-bold'
   }
 })
 
@@ -43,9 +43,9 @@ export default class Home extends React.Component {
         <ScrollView>
           <View style={styles.container}>
             <View style={styles.helloContainer}>
-              <Font name="open-sans-bold" style={styles.helloText}>
+              <Text style={styles.helloText}>
                 Quanto vamos economizar hoje, {'\n'}{user.name}?
-              </Font>
+              </Text>
             </View>
 
             {(user.plugs.length === 0) &&

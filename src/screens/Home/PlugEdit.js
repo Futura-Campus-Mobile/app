@@ -2,7 +2,7 @@ import React from 'react'
 
 import { View, Text, Button } from 'react-native'
 
-import UserContext from '../../providers/User'
+import { Context as UserContext } from '../../providers/User'
 
 export default class PlugEdit extends React.Component {
     static contextType = UserContext

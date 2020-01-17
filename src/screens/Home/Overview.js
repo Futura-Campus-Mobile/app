@@ -5,7 +5,7 @@ import PieChart from '../../components/PieChart'
 import Device from '../../components/Device'
 import Svg, { Circle } from 'react-native-svg';
 
-import UserContext from '../../providers/User'
+import { Context as UserContext } from '../../providers/User'
 
 const styles = StyleSheet.create({
   SafeAreaView:{

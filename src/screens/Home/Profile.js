@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Text, View } from 'react-native'
 
-import UserContext from '../../providers/User'
+import { Context as UserContext } from '../../providers/User'
 
 export default class Profile extends React.Component {
   static navigationOptions = {
