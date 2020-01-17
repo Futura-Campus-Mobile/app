@@ -1,4 +1,7 @@
 import React from 'react'
+import { View, ActivityIndicator, StatusBar } from 'react-native'
+
+import * as ExpoFont from 'expo-font'
 
 import WelcomeScreen from './src/screens/Welcome'
 import SignInScreen from './src/screens/SignIn'
@@ -21,8 +24,31 @@ const RootNavigator = createSwitchNavigator(
 
 const AppContainer = createAppContainer(RootNavigator)
 
-export default () => (
-  <UserProvider>
-    <AppContainer />
-  </UserProvider>
-)
+export default class App extends React.Component {
+  state = {
+    assetsLoaded: false
+  }
+
+  async componentDidMount(){
+    await ExpoFont.loadAsync({
+      'open-sans-bold': require('../../assets/fonts/OpenSans-Bold.ttf'),
+    })
+
+    this.setState({ assetsLoaded: true })
+  }
+
+  render(){
+    const { assetsLoaded } = this.state
+
+    return assetsLoaded ? (
+      <UserProvider>
+        <AppContainer />
+      </UserProvider>
+    ) : (
+      <View>
+        <ActivityIndicator/>
+        <StatusBar/>
+      </View>
+    )
+  }
+}
