@@ -16,7 +16,8 @@ import { createBottomTabNavigator } from 'react-navigation-tabs'
 
 const HomeTab = createBottomTabNavigator(
   {
-    Home: MyHomeScreen,
+    Home: HomeScreen,
+    MyHome: MyHomeScreen,
     Profile: ProfileScreen,
     Overview: OverviewScreen
   }, 

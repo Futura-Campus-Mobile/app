@@ -56,7 +56,7 @@ export default class Home extends React.Component {
 
             <View >
               <VerTodosContainer text="Seus dispositivos" />
-              <View style={{flexDirection:"row",flexWrap:"wrap", justifyContent:"space-between"}}> 
+              <View style={{ flexDirection:"row", flexWrap:"wrap", justifyContent:"space-between" }}> 
                 {user.devices.map(device => (<Device
                   key={device.id}
                   name={device.name}

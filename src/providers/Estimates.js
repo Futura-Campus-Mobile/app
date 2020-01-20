@@ -5,8 +5,8 @@ export const Context = React.createContext()
 export class Provider extends React.Component {
     state = {
         defaultDevices: [],
-        defaultRooms: [],
-        getDevicesByRoom: room => this.state.defaultDevices.filter(devices => devices.defaultRooms.includes(room)),
+        defaultRoomNames: [],
+        getDefaultDevicesByRoom: room => this.state.defaultDevices.filter(devices => devices.defaultRoomNames.includes(room)),
         // retorna um valor de 1 a 5 (A a E)
         getComsumptionByLevel: ({ max, min }, level) => (min + (max-min)*(level-1)/4)
     }
@@ -16,7 +16,7 @@ export class Provider extends React.Component {
             {
                 name: 'Geladeira',
                 consumption: { max: 40, min: 10 },
-                defaultRooms: ['Cozinha'],
+                defaultRoomNames: ['Cozinha'],
                 defaultUseTime: [
                     { 
                         from: 0, to: 24*60, // intervalo do dia em minutos (dia inteiro)
@@ -27,28 +27,28 @@ export class Provider extends React.Component {
             {
                 name: 'TV',
                 consumption: { max: 40, min: 10 },
-                defaultRooms: ['Sala', 'Quarto'],
+                defaultRoomNames: ['Sala', 'Quarto'],
                 defaultUseTime: []
             },
             {
                 name: 'Carregador',
                 consumption: { max: 40, min: 10 },
-                defaultRooms: ['Quarto', 'Banheiro'],
+                defaultRoomNames: ['Quarto', 'Banheiro'],
                 defaultUseTime: []
             },
             {
                 name: 'Máquina de lavar',
                 consumption: { max: 40, min: 10 },
-                defaultRooms: ['Área de serviço'],
+                defaultRoomNames: ['Área de serviço'],
                 defaultUseTime: []
             }
         ]
 
         const getUniqueValues = (array) => [...(new Set(array))]
 
-        const defaultRooms = getUniqueValues(defaultDevices.reduce((rooms, device) => [...rooms, ...device.defaultRooms], []))
+        const defaultRoomNames = getUniqueValues(defaultDevices.reduce((rooms, device) => [...rooms, ...device.defaultRoomNames], []))
 
-        this.setState({ defaultRooms, defaultDevices })
+        this.setState({ defaultRoomNames, defaultDevices })
     }
 
     render() {

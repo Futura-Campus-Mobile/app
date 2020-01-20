@@ -76,47 +76,64 @@ const ActionBar = ({ navigation, show }) => (
 
 export default class TabBar extends React.Component {
     state = {
-        showActionBar: false
+        showActionBar: false,
+        toggleActionBar: () => this.setState({ showActionBar: !this.state.showActionBar }),
+        isActiveRoute: name => this.props.navigation.state.routes[this.props.navigation.state.index].routeName === name,
+        mode: {
+            goBack: { 
+                fabIconName: 'keyboard-arrow-left',
+                color: '#2D9BF0',
+                onPress: () => this.props.navigation.navigate('Home')
+            },
+            addDevice: { 
+                fabIconName: 'add',
+                color: '#9510AC',
+                onPress: () => this.state.toggleActionBar()
+            },
+            closeActionBar: {
+                fabIconName: 'keyboard-arrow-down',
+                color: '#7B0D8F',
+                onPress: () => this.state.toggleActionBar()
+            }
+        },
+        getCurrentMode: () => {
+            const { mode, isActiveRoute } = this.state
+
+            if (!isActiveRoute('Home'))
+                return mode.goBack
+
+            if (this.state.showActionBar)
+                return mode.closeActionBar
+
+            return mode.addDevice
+        }
     }
 
     render() {
         const { navigation } = this.props
-        const { routes, index: activeRouteIndex } = navigation.state
+        const { toggleActionBar, getCurrentMode, isActiveRoute, showActionBar, mode } = this.state
 
-        const isActiveRoute = (name) => routes[activeRouteIndex].routeName === name
-
-        const _toggleActionBar = () => {
-            this.setState({ showActionBar: !this.state.showActionBar })
-        }
-
-        const _fabIconName = () => {
-            if (this.state.showActionBar)
-                return 'keyboard-arrow-down'
-
-            if (!isActiveRoute('Home'))
-                return 'keyboard-arrow-left'
-
-            return 'add'
-        }
+        if(showActionBar && getCurrentMode() !== mode.closeActionBar)
+            toggleActionBar()
 
         return (
             <View style={styles.container}>
-                <ActionBar navigation={navigation} show={this.state.showActionBar} />
+                <ActionBar navigation={navigation} show={showActionBar} />
                 <View style={styles.tabBar}>
                     <BarButton
                         iconName="equalizer"
                         text="Overview"
                         selected={isActiveRoute('Overview')}
-                        onPress={() => this.state.showActionBar === true ? ( _toggleActionBar(), navigation.navigate('Overview') ) : navigation.navigate('Overview')}
+                        onPress={() => navigation.navigate('Overview')}
                     />
-                    <TouchableOpacity style={{ ...styles.fabButton, backgroundColor: isActiveRoute('Home') ? '#9510AC' : '#2D9BF0' }} onPress={() => isActiveRoute('Home') ? _toggleActionBar() : navigation.navigate('Home')}>
-                        <Icon name={_fabIconName()} color="#fff" size={40}></Icon>
+                    <TouchableOpacity style={{ ...styles.fabButton, backgroundColor: getCurrentMode().color }} onPress={getCurrentMode().onPress}>
+                        <Icon name={getCurrentMode().fabIconName} color="#fff" size={40}></Icon>
                     </TouchableOpacity>
                     <BarButton
                         iconName="person-outline"
                         text="Profile"
                         selected={isActiveRoute('Profile')}
-                        onPress={() => this.state.showActionBar === true ? ( _toggleActionBar(), navigation.navigate('Profile') ) : navigation.navigate('Profile')}
+                        onPress={() => navigation.navigate('Profile')}
                     />
                 </View>
             </View>
