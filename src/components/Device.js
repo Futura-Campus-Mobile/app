@@ -6,9 +6,9 @@ export default Device = ({ onPress, name="", color="black"  }) => (
     <TouchableOpacity
         style={{
             padding: 10,
-            marginTop:5,
+            margin: 5,
             width: "46%",
-            height:160,
+            height: 160,
             backgroundColor: 'white',
             borderRadius: 10
         }}

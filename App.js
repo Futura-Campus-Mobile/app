@@ -32,7 +32,9 @@ export default class App extends React.Component {
 
   async componentDidMount(){
     await ExpoFont.loadAsync({
-      'open-sans-bold': require('./assets/fonts/opensans/OpenSans-Bold.ttf'),
+      'opensans-bold': require('./assets/fonts/opensans/OpenSans-Bold.ttf'),
+      'montserrat-bold': require('./assets/fonts/montserrat/Montserrat-Bold.ttf'),
+      'raleway-regular': require('./assets/fonts/raleway/Raleway-Regular.ttf'),
     })
 
     this.setState({ assetsLoaded: true })

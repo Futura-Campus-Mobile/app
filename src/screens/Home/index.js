@@ -9,7 +9,6 @@ import DeviceEditScreen from './DeviceEdit'
 import PlugEditScreen from './PlugEdit'
 
 import TabBar from '../../components/TabBar'
-import StackNavigatorHeader from '../../components/StackNavigationHeader'
 
 import { createStackNavigator } from 'react-navigation-stack'
 import { createBottomTabNavigator } from 'react-navigation-tabs'
@@ -37,7 +36,8 @@ export default createStackNavigator(
   {
     initialRouteName: 'Home',
     defaultNavigationOptions: {
-      header: props => <StackNavigatorHeader {...props}/>,
+      headerShown: false,
     }
   }
 )
+

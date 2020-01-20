@@ -52,7 +52,13 @@ const styles = StyleSheet.create({
 const BarButton = ({ iconName, text, size = 25, selected = false, onPress }) => (
     <TouchableOpacity style={styles.barButton} onPress={onPress}>
         <Icon name={iconName} color={selected ? '#000' : '#b7b7b7'} size={size} />
-        <Text style={{ fontSize: size / 2.2, color: (selected ? '#000' : '#b7b7b7') }}>{text}</Text>
+        {!selected && <Text 
+            style={{ 
+                fontSize: size / 2.2, 
+                fontFamily: 'raleway-regular',
+                color: '#b7b7b7' 
+            }}
+        >{text}</Text>}
     </TouchableOpacity>
 )
 
@@ -82,17 +88,18 @@ export default class TabBar extends React.Component {
         mode: {
             goBack: { 
                 fabIconName: 'keyboard-arrow-left',
-                color: '#2D9BF0',
+                fillColor: '#dcdcdc',
+                fontColor: '#000',
                 onPress: () => this.props.navigation.navigate('Home')
             },
             addDevice: { 
                 fabIconName: 'add',
-                color: '#9510AC',
+                fillColor: '#9510AC',
                 onPress: () => this.state.toggleActionBar()
             },
             closeActionBar: {
                 fabIconName: 'keyboard-arrow-down',
-                color: '#7B0D8F',
+                fillColor: '#7B0D8F',
                 onPress: () => this.state.toggleActionBar()
             }
         },
@@ -126,8 +133,8 @@ export default class TabBar extends React.Component {
                         selected={isActiveRoute('Overview')}
                         onPress={() => navigation.navigate('Overview')}
                     />
-                    <TouchableOpacity style={{ ...styles.fabButton, backgroundColor: getCurrentMode().color }} onPress={getCurrentMode().onPress}>
-                        <Icon name={getCurrentMode().fabIconName} color="#fff" size={40}></Icon>
+                    <TouchableOpacity style={{ ...styles.fabButton, backgroundColor: getCurrentMode().fillColor }} onPress={getCurrentMode().onPress}>
+                        <Icon name={getCurrentMode().fabIconName} color={getCurrentMode().fontColor || '#fff'} size={40}></Icon>
                     </TouchableOpacity>
                     <BarButton
                         iconName="person-outline"

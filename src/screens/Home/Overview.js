@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: "center",
     width: "100%",
-    maxHeight: Dimensions.get('window').height - 115,
+    maxHeight: Dimensions.get('window').height - 90,
   },
   dashboard: {
     flexDirection: "row",

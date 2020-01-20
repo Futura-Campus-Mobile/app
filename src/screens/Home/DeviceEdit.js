@@ -19,7 +19,7 @@ export default class DeviceEdit extends React.Component {
 
     render() {
         const _addDevice = () => {
-            this.context.addDevice()
+            this.context.addDevice({})
             this.props.navigation.goBack()
         }
 
