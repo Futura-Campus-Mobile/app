@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
 })
 
 const VerTodosContainer = ({ text }) => (
-  <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+  <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 10 }}>
     <Text.Content>{text}</Text.Content>
     <Text.Content style={{ color: '#767676' }}>Ver todos <Icon name="chevron-right" /></Text.Content>
   </View>
@@ -49,31 +49,36 @@ export default class Home extends React.Component {
               </Text.Header>
             </View>
 
-            {(user.devices.length === 0) &&
+            {(user.plugs.length === 0) ?
               <Text.Content style={{ marginBottom: 20 }}>
-                Você ainda não tem nenhum dispositivo adicionado.
-                Adicione o primeiro para continuar
-              </Text.Content>}
-
-            <View>
+                Você ainda não possui nenhum Plug. Adicione Plugs para ter ainda mais economia e conforto
+              </Text.Content> : <View>
               <VerTodosContainer text="Seus Plugs" />
               {user.plugs.map(plug => (<Device
                 key={plug.id}
                 name={plug.model}
                 onPress={() => navigation.navigate('PlugEdit', { plug })}
               />))}
-            </View>
+            </View>}
 
-            <View>
-              <VerTodosContainer text="Seus dispositivos" />
-              <View style={{ flexDirection: "row", flexWrap: "wrap", justifyContent: "space-between" }}>
-                {user.devices.map(device => (<Device
-                  key={device.id}
-                  name={device.name}
-                  onPress={() => navigation.navigate('DeviceInfo', { device })}
-                />))}
+            {(user.devices.length === 0) ?
+              <Text.Content style={{ marginBottom: 20 }}>
+                Você ainda não tem nenhum dispositivo adicionado.
+                Adicione o primeiro para continuar
+                </Text.Content> :
+              <View>
+                <VerTodosContainer text="Seus dispositivos" />
+                <View style={{ flexDirection: "row", flexWrap: "wrap", justifyContent: "space-between" }}>
+                  {user.devices.map(device => (<Device
+                    key={device.id}
+                    name={device.name}
+                    onLongPress={() => navigation.navigate('DeviceInfo', { device })}
+                  />))}
+                </View>
               </View>
-            </View>
+            }
+
+
           </View>
         </ScrollView>
       </SafeAreaView>

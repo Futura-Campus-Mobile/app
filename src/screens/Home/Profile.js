@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Text, View } from 'react-native'
+import { Text, View, SafeAreaView, TouchableOpacity } from 'react-native'
 
 import { Context as UserContext } from '../../providers/User'
 
@@ -10,15 +10,20 @@ export default class Profile extends React.Component {
   }
   static contextType = UserContext
 
-  render(){
+  render() {
     const { navigation } = this.props
     const user = this.context
 
     return (
-      <View>
-        <Text>Nome: {user.name}</Text>
-        <Text>E-mail: {user.email}</Text>
-      </View>
+      <SafeAreaView>
+        <View>
+          <Text>Nome: {user.name}</Text>
+          <Text>E-mail: {user.email}</Text>
+          <TouchableOpacity onPress={() => navigation.navigate('MyHome')}>
+            <Text>Minha casa</Text>
+          </TouchableOpacity>
+        </View>
+      </SafeAreaView>
     );
   }
 

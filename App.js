@@ -35,6 +35,8 @@ export default class App extends React.Component {
       'opensans-bold': require('./assets/fonts/opensans/OpenSans-Bold.ttf'),
       'montserrat-bold': require('./assets/fonts/montserrat/Montserrat-Bold.ttf'),
       'raleway-regular': require('./assets/fonts/raleway/Raleway-Regular.ttf'),
+      'raleway-medium': require('./assets/fonts/raleway/Raleway-Medium.ttf'),
+      'raleway-light': require('./assets/fonts/raleway/Raleway-Light.ttf'),
     })
 
     this.setState({ assetsLoaded: true })

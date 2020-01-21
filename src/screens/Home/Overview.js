@@ -1,8 +1,10 @@
 import React from 'react'
 
 import { StyleSheet, Text, View, Picker, SafeAreaView, ScrollView, Dimensions } from 'react-native'
+
 import PieChart from '../../components/PieChart'
 import Device from '../../components/Device'
+import Circle from '../../components/Circle'
 
 import { Context as UserContext } from '../../providers/User'
 
@@ -46,16 +48,6 @@ const styles = StyleSheet.create({
     flexWrap: "wrap"
   }
 })
-
-const Circle = ({ size=15, fill, style }) => (
-  <View style={{ 
-    backgroundColor: fill,
-    height: size, 
-    width: size, 
-    borderRadius: size*size,
-    ...style
-  }} />
-)
 
 export default class Overview extends React.Component {
   static navigationOptions = {

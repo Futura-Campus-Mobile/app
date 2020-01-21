@@ -1,22 +1,39 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-import { TouchableOpacity, Text } from 'react-native'
+import { TouchableOpacity, View } from 'react-native'
 
-export default Device = ({ onPress, name="", color="black"  }) => (
-    <TouchableOpacity
-        style={{
-            padding: 10,
-            margin: 5,
-            width: "46%",
-            height: 160,
-            backgroundColor: 'white',
-            borderRadius: 10
-        }}
-        onPress={onPress}
-    >
-        <Text style={{color:"black", fontSize:16, fontWeight:"700"}}>{name}</Text>
-        <Text style={{color:"grey", marginTop:10}}>14 horas ligado  </Text>
-        <Text style={{color:"grey", marginTop:10}}>60 reais consumidos  </Text>
-        <Text style={{color:"black", alignSelf:'flex-end', paddingRight:10, top: "98%", position:'absolute'}}>Ver mais...</Text>
-    </TouchableOpacity>
+import Text from '../components/Text'
+
+const ElapsedTime = ({ isOn }) => (
+    <View style={{ flexGrow: 1, marginVertical: 10, flexDirection: 'row', alignItems: 'center' }}>
+        {isOn && <View style={{ backgroundColor: '#70956D', height: 5, width: 5, borderRadius: 25, marginRight: 5 }} />}
+        <Text.Info style={{ color: isOn ? '#70956D' : '#808080', }}>
+            {isOn ? '14 horas ligado' : 'Desligado' }
+        </Text.Info>
+    </View>
 )
+
+export default Device = ({ onLongPress, onPress, name = "" }) => {
+    const [isOn, setIsOn] = useState(true)
+
+    return (
+        <TouchableOpacity
+            style={{
+                padding: 15,
+                margin: 5,
+                width: "46%",
+                backgroundColor: 'white',
+                borderRadius: 10,
+                flexDirection: 'column'
+            }}
+            onPress={() => setIsOn(!isOn)}
+            onLongPress={onLongPress}
+        >
+            <Text.Title style={{ color: "black", fontSize: 16 }}>{name}</Text.Title>
+            <ElapsedTime isOn={isOn}/>
+            <View style={{ alignItems: 'center', backgroundColor: '#263154', padding: 5, borderRadius: 5 }}>
+                <Text.Content style={{ color: "#FFF" }}>- R$60</Text.Content>
+            </View>
+        </TouchableOpacity>
+    )
+}

@@ -88,18 +88,18 @@ export default class TabBar extends React.Component {
         mode: {
             goBack: { 
                 fabIconName: 'keyboard-arrow-left',
-                fillColor: '#dcdcdc',
-                fontColor: '#000',
+                buttomColor: '#000',
+                iconColor: '#fff',
                 onPress: () => this.props.navigation.navigate('Home')
             },
             addDevice: { 
                 fabIconName: 'add',
-                fillColor: '#9510AC',
+                buttomColor: '#9510AC',
                 onPress: () => this.state.toggleActionBar()
             },
             closeActionBar: {
                 fabIconName: 'keyboard-arrow-down',
-                fillColor: '#7B0D8F',
+                buttomColor: '#7B0D8F',
                 onPress: () => this.state.toggleActionBar()
             }
         },
@@ -133,8 +133,8 @@ export default class TabBar extends React.Component {
                         selected={isActiveRoute('Overview')}
                         onPress={() => navigation.navigate('Overview')}
                     />
-                    <TouchableOpacity style={{ ...styles.fabButton, backgroundColor: getCurrentMode().fillColor }} onPress={getCurrentMode().onPress}>
-                        <Icon name={getCurrentMode().fabIconName} color={getCurrentMode().fontColor || '#fff'} size={40}></Icon>
+                    <TouchableOpacity style={{ ...styles.fabButton, backgroundColor: getCurrentMode().buttomColor }} onPress={getCurrentMode().onPress}>
+                        <Icon name={getCurrentMode().fabIconName} color={getCurrentMode().iconColor || '#fff'} size={40}></Icon>
                     </TouchableOpacity>
                     <BarButton
                         iconName="person-outline"
