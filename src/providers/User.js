@@ -7,6 +7,10 @@ export class UserProvider extends React.Component {
         name: "Pedro",
         email: "pedro@teste.com",
         password: "25414540709124050347d150085a22caa79b15b23da75c4f1c4626bad493664d",
+        // avatar: "https://cdn.dicionariopopular.com/imagens/pagar-o-pato-og.jpg",
+        /**
+         * Não identifiquei uma forma de adicionar imagem para o usuário sksksk
+         */
         devices: 
         [{
             "id": 0,
