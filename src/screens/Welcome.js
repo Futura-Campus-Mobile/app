@@ -96,8 +96,8 @@ export default Welcome = ({ navigation }) => {
     const slidesList = [
         (
             <View style={{ marginBottom: 30, paddingEnd: 30 }}>
-                <Text.Title style={{ fontSize: 27, marginBottom: 10 }}>Bem vindo ao Futura</Text.Title>
-                <Text.Content style={{ fontSize: 15 }}>
+                <Text.Title fontSize={27} style={{ marginBottom: 10 }}>Bem vindo ao Futura</Text.Title>
+                <Text.Content fontSize={15}>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                     sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
                 </Text.Content>
@@ -105,8 +105,8 @@ export default Welcome = ({ navigation }) => {
         ),
         (
             <View style={{ marginBottom: 30, paddingEnd: 30 }}>
-                <Text.Title style={{ fontSize: 27, marginBottom: 10 }}>Economize</Text.Title>
-                <Text.Content style={{ fontSize: 15 }}>
+                <Text.Title fontSize={27} style={{ marginBottom: 10 }}>Economize</Text.Title>
+                <Text.Content fontSize = {15}>
                     Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
                     nisi ut aliquip ex ea commodo consequat
                 </Text.Content>
