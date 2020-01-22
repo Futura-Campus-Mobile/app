@@ -16,7 +16,6 @@ import { createBottomTabNavigator } from 'react-navigation-tabs'
 const HomeTab = createBottomTabNavigator(
   {
     Home: HomeScreen,
-    MyHome: MyHomeScreen,
     Profile: ProfileScreen,
     Overview: OverviewScreen
   }, 
@@ -29,6 +28,7 @@ const HomeTab = createBottomTabNavigator(
 export default createStackNavigator(
   {
     Home: HomeTab,
+    MyHome: MyHomeScreen,
     DeviceInfo: DeviceInfoScreen,
     PlugEdit: PlugEditScreen,
     DeviceEdit: DeviceEditScreen,

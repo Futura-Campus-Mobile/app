@@ -32,6 +32,23 @@ export class Provider extends React.Component {
             }
         ],
         plugs: [],
+        connectedPlugs: {},
+        connectPlug: (plugId, deviceId) => {
+            const { connectedPlugs } = this.state
+
+            Object.entries(connectedPlugs).forEach(([plug, device]) => {
+                if(deviceId == device) connectedPlugs[plug] = undefined 
+            })
+
+            this.setState({ connectedPlugs: { ...connectedPlugs, [plugId]: deviceId }})
+        },
+        deviceIsConnected: deviceId => {
+            const entry = Object.entries(this.state.connectedPlugs)
+                .find(([_, device]) => device == deviceId)
+
+            if(entry) return entry[0]
+        },
+        plugIsConnected: plugId => this.state.connectedPlugs[plugId],
         getDevicesByRoom: () => {
             const { devices } = this.state
             const rooms = {}
@@ -67,7 +84,7 @@ export class Provider extends React.Component {
             }
 
             this.setState({ plugs: [...this.state.plugs, plug] })
-        },
+        }
     }
 
     render() {

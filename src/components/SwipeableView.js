@@ -16,8 +16,8 @@ export default SwipableView = ({
         const [x0, y0] = startPosition
         const { nativeEvent } = ev
         const { locationX: x, locationY: y } = nativeEvent
-        const dx = x0 - x
-        const dy = y0 - y
+        const dx = x0 - x - distance
+        const dy = y0 - y - distance
 
         if (dx > 0) onSwipeLeft()
         if (dx < 0) onSwipeRight()

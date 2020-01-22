@@ -62,20 +62,20 @@ const BarButton = ({ iconName, text, size = 25, selected = false, onPress }) => 
     </TouchableOpacity>
 )
 
-const ActionBar = ({ navigation, show }) => (
+const ActionBar = ({ navigation, show, toggle }) => (
     <View style={styles.actionBar({ show })}>
         <BarButton
             iconName="kitchen"
             text="Device"
             size={30}
-            onPress={() => navigation.navigate('DeviceEdit')}
+            onPress={() => { toggle(), navigation.navigate('DeviceEdit') }}
         />
         <View style={{ height: 90, backgroundColor: '#d2d2d2', width: 1.2 }} />
         <BarButton
             iconName="power"
             text="Plug"
             size={30}
-            onPress={() => navigation.navigate('PlugEdit')}
+            onPress={() => { toggle(), navigation.navigate('PlugEdit') }}
         />
     </View>
 )
@@ -125,7 +125,7 @@ export default class TabBar extends React.Component {
 
         return (
             <View style={styles.container}>
-                <ActionBar navigation={navigation} show={showActionBar} />
+                <ActionBar navigation={navigation} show={showActionBar} toggle={toggleActionBar} />
                 <View style={styles.tabBar}>
                     <BarButton
                         iconName="equalizer"

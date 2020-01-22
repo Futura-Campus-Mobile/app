@@ -56,7 +56,7 @@ export default class Welcome extends React.Component {
                     <Text.Content style={{ fontSize: 15 }}>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                         sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
-                </Text.Content>
+                    </Text.Content>
                 </View>
             ),
             (

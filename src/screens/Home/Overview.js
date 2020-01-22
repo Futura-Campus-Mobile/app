@@ -59,6 +59,7 @@ export default class Overview extends React.Component {
     const { navigation } = this.props
     const user = this.context
     const { devices } = user
+
     return (
       <SafeAreaView style={styles.SafeAreaView}>
 
