@@ -11,6 +11,7 @@ import { createAppContainer, createSwitchNavigator } from 'react-navigation'
 
 import { Provider as UserProvider } from "./src/providers/User"
 import { Provider as EstimatesProvider } from './src/providers/Estimates'
+import { ThemeProvider } from './src/providers/ThemeProvider'
 
 const RootNavigator = createSwitchNavigator(
   {
@@ -30,7 +31,7 @@ export default class App extends React.Component {
     assetsLoaded: false
   }
 
-  async componentDidMount(){
+  async componentDidMount() {
     await ExpoFont.loadAsync({
       'opensans-bold': require('./assets/fonts/opensans/OpenSans-Bold.ttf'),
       'montserrat-bold': require('./assets/fonts/montserrat/Montserrat-Bold.ttf'),
@@ -42,20 +43,24 @@ export default class App extends React.Component {
     this.setState({ assetsLoaded: true })
   }
 
-  render(){
+  render() {
     const { assetsLoaded } = this.state
 
-    return assetsLoaded ? (
-      <UserProvider>
-        <EstimatesProvider>
-          <AppContainer/>
-        </EstimatesProvider>
-      </UserProvider>
-    ) : (
-      <View>
-        <ActivityIndicator/>
-        <StatusBar/>
-      </View>
+    return (
+      <ThemeProvider>
+        {assetsLoaded ? (
+          <UserProvider>
+            <EstimatesProvider>
+              <AppContainer />
+            </EstimatesProvider>
+          </UserProvider>
+        ) : (
+            <View>
+              <ActivityIndicator />
+              <StatusBar />
+            </View>
+          )}
+      </ThemeProvider>
     )
   }
 }

@@ -2,6 +2,7 @@
   "expo": {
     "name": "Futura",
     "slug": "futura-app",
+    "scheme": "futura",
     "privacy": "public",
     "sdkVersion": "36.0.0",
     "platforms": [
