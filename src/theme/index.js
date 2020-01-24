@@ -18,6 +18,10 @@ const ThemeColors = {
         light: 'white',
         dark: '#292859',
     },
+    headerPrimary: {
+        light: '#8e7af7',
+        dark: '#8e7af7'
+    },
     containerBackground: {
         light: '#eaeaea',
         dark: '#292859'

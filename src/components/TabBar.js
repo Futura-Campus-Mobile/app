@@ -71,10 +71,10 @@ const ActionBar = ({ navigation, show, toggle }) => {
     return (
         <Animated.View style={{...styles.actionBar, bottom }}>
             <BarButton
-                iconName="kitchen"
+                iconName="home"
                 text="Device"
                 size={30}
-                onPress={() => { toggle(), navigation.navigate('DeviceEdit') }}
+                onPress={() => { toggle(), navigation.navigate('MyHome') }}
             />
             <View style={{ height: 90, backgroundColor: '#d2d2d2', width: 1.2 }} />
             <BarButton

@@ -4,12 +4,19 @@ import { View, TouchableOpacity, Text } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
 export default AddDevice = ({ defaultRoomDevices, currentRoom, onAddDevice, close }) => (
-    <View style={{ padding: 40 }}>
+    <View style={{
+        padding: 40,
+        marginTop: 80,
+        height: '100%',
+        borderTopStartRadius: 30,
+        borderTopEndRadius: 30, 
+        backgroundColor: '#fff'
+    }}>
         <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
             <Text>{currentRoom.name}</Text>
 
             <TouchableOpacity onPress={close}>
-                <Icon name="close" size={20} />
+                <Icon name="close" size={25} />
             </TouchableOpacity>
         </View>
 

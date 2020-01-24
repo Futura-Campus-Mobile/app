@@ -1,13 +1,14 @@
 import React from 'react'
 
-import { Text, View, SafeAreaView, TouchableOpacity } from 'react-native'
+import { SafeAreaView } from 'react-native'
+
+import Text from '../../components/Text'
+import Card from '../../components/Card'
+import Header from '../../components/Header'
 
 import { Context as UserContext } from '../../providers/User'
 
 export default class Profile extends React.Component {
-  static navigationOptions = {
-    title: 'Perfil'
-  }
   static contextType = UserContext
 
   render() {
@@ -16,13 +17,11 @@ export default class Profile extends React.Component {
 
     return (
       <SafeAreaView>
-        <View>
-          <Text>Nome: {user.name}</Text>
-          <Text>E-mail: {user.email}</Text>
-          <TouchableOpacity onPress={() => navigation.navigate('MyHome')}>
-            <Text>Minha casa</Text>
-          </TouchableOpacity>
-        </View>
+        <Header title="Perfil" />
+        <Card>
+          <Text.Info><Text.Content>Nome:</Text.Content> {user.name}</Text.Info>
+          <Text.Info><Text.Content>E-mail:</Text.Content> {user.email}</Text.Info>
+        </Card>
       </SafeAreaView>
     );
   }

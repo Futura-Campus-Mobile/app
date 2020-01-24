@@ -1,10 +1,14 @@
 import React from 'react'
-import { View, Text, TouchableOpacity, Modal } from 'react-native'
+import { View, TouchableOpacity, Modal, SafeAreaView } from 'react-native'
 
-import Icon from 'react-native-vector-icons/MaterialIcons'
+import Icon from 'react-native-vector-icons/FontAwesome5'
 
 import { Context as EstimatesContext } from '../../../providers/Estimates'
 import { Context as UserContext } from '../../../providers/User'
+
+import Text from '../../../components/Text'
+import Header from '../../../components/Header'
+import Card from '../../../components/Card'
 
 import AddRoom from './AddRoom'
 import AddDevice from './AddDevice'
@@ -50,38 +54,41 @@ export default class MyHome extends React.Component {
             [...acc, ...room.devices.map(device => ({ ...device, room: room.name }))], [])
 
         const Room = ({ name, devicesQuantity, index }) => (
-            <View style={{
-                width: 120,
-                borderColor: '#ddd',
-                borderWidth: 1,
-                borderRadius: 10
+            <Card style={{
+                marginHorizontal: 20,
+                padding: 20,
+                flexDirection: 'column'
             }}>
                 <TouchableOpacity
                     style={{
-                        flexDirection: 'row-reverse',
-                        paddingTop: 10,
-                        paddingLeft: 10
+                        position: 'absolute',
+                        right: 0,
+                        padding: 10
                     }}
                     onPress={() => removeRoom(index)}
                 >
-                    <Icon name="close" size={20} />
+                    <Icon name="trash" size={15} />
                 </TouchableOpacity>
                 <View style={{
-                    padding: 20
                 }}>
-                    <Text>{name}: {devicesQuantity} dispositivo(s)</Text>
+                    <Icon name="bed" size={20} style={{ marginBottom: 10 }} />
+                    <Text.Title>{name}</Text.Title>
+                    <Text.Info>{devicesQuantity} dispositivo(s)</Text.Info>
                 </View>
-            </View>
+            </Card>
         )
 
         return (
-            <View style={{ padding: 20 }}>
+            <SafeAreaView>
+                <Header title="Meus dispositivos" goBack={() => this.props.navigation.goBack()}/>
+
                 <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
                     <EstimatesContext.Consumer>
                         {({ getDefaultDevicesByRoom, defaultRoomNames }) => (
                             <>
                                 <Modal
                                     animationType="slide"
+                                    transparent={true}
                                     visible={modalVisible === 'AddRoom'}
                                 >
                                     <AddRoom
@@ -92,6 +99,7 @@ export default class MyHome extends React.Component {
                                 </Modal>
                                 <Modal
                                     animationType="slide"
+                                    transparent={true}
                                     visible={modalVisible === 'AddDevice'}
                                 >
                                     <AddDevice
@@ -103,6 +111,7 @@ export default class MyHome extends React.Component {
                                 </Modal>
                                 <Modal
                                     animationType="slide"
+                                    transparent={true}
                                     visible={modalVisible === 'DeviceEdit'}
                                 >
                                     <DeviceEdit
@@ -129,19 +138,32 @@ export default class MyHome extends React.Component {
                     )}
                 </View>
 
-                <TouchableOpacity onPress={() => setModalVisible('AddRoom')}>
-                    <Text>Add room</Text>
-                </TouchableOpacity>
+                <View 
+                    style={{ 
+                        flexDirection: 'column',
+                        alignItems: 'center'
+                    }}
+                >
+                    <TouchableOpacity
+                        style={{ padding: 5 }}
+                        onPress={() => setModalVisible('AddRoom')}
+                    >
+                        <Text.Title>Adicionar novo cômodo</Text.Title>
+                    </TouchableOpacity>
 
-                <UserContext.Consumer>
-                    {({ setDevices }) => (
-                        <TouchableOpacity onPress={() => { setDevices(getAllDevices()), navigation.navigate('Home')}}>
-                            <Text>Save changes</Text>
-                        </TouchableOpacity>
-                    )}
-                </UserContext.Consumer>
+                    <UserContext.Consumer>
+                        {({ setDevices }) => (
+                            <TouchableOpacity
+                                style={{ padding: 5 }}
+                                onPress={() => { setDevices(getAllDevices()), navigation.navigate('Home')}}
+                            >
+                                <Text.Content>Salvar alterações</Text.Content>
+                            </TouchableOpacity>
+                        )}
+                    </UserContext.Consumer>
+                    </View>
 
-            </View>
+            </SafeAreaView>
         )
     }
 }

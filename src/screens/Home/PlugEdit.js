@@ -1,6 +1,10 @@
 import React from 'react'
 
-import { View, SafeAreaView, Text, Button, ActivityIndicator } from 'react-native'
+import { View, SafeAreaView, Button, ActivityIndicator } from 'react-native'
+
+import Text from '../../components/Text'
+import Card from '../../components/Card'
+import Header from '../../components/Header'
 
 import { Context as UserContext } from '../../providers/User'
 import { openWifiSettings } from '../../helpers/platform'
@@ -9,16 +13,16 @@ export default class PlugEdit extends React.Component {
     static contextType = UserContext
 
     state = {
-        loading: true,
-        plugData: {},
+        loading: false,
+        plugData: { id: '192f' },
         error: ''
     }
 
     componentDidMount() {
-        this.searchByPlug()
+        // this.searchByPlug()
     }
 
-    async searchByPlug(){
+    async searchByPlug() {
         try {
             const response = await fetch('http://172.217.28.1/deviceinfo')
 
@@ -42,28 +46,31 @@ export default class PlugEdit extends React.Component {
     render() {
         const { loading, plugData, error } = this.state
 
+
         return (
             <SafeAreaView>
+                <Header title="Adicionar novo Plug" goBack={() => this.props.navigation.goBack()}/>
                 {!loading ? (
-                    <View>
-                        <Text>Plug info</Text>
+                    <Card>
                         {!!error ? (
-                            <>
+                            <>  
+                                <Text.Title fontSize={20} style={{ marginBottom: 10 }}>Nenhum Plug foi encontrado</Text.Title>
                                 <Text>{error}</Text>
                                 <Button title="Open WiFi Settigns" onPress={openWifiSettings} />
                             </>
                         ) : (
-                            <>
-                                <Text>{`Plug encontrado: ${plugData.id}`}</Text>
-                                <Button title="Add plug" onPress={this.addPlug} />
-                            </>
-                        )}
-                    </View>
+                                <>
+                                    <Text.Title fontSize={20} style={{ marginBottom: 10 }}>Plug encontrado</Text.Title>
+                                    <Text.Info>{plugData.id}</Text.Info>
+                                    <Button title="Add plug" onPress={this.addPlug} />
+                                </>
+                            )}
+                    </Card>
                 ) : (
-                    <View>
-                        <ActivityIndicator/>
-                    </View>
-                )}
+                        <View>
+                            <ActivityIndicator />
+                        </View>
+                    )}
             </SafeAreaView>
         )
     }
