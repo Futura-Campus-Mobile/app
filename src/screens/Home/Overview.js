@@ -1,51 +1,51 @@
 import React from 'react'
 
-import { StyleSheet, Text, View, Picker, SafeAreaView, ScrollView, Dimensions } from 'react-native'
-
-import PieChart from '../../components/PieChart'
+import { StyleSheet, View, Picker, SafeAreaView, ScrollView, Dimensions, StatusBar } from 'react-native'
+import { PieChart } from "react-native-chart-kit";
 import Device from '../../components/Device'
-import Circle from '../../components/Circle'
+import Text, { normalizeFontSize } from '../../components/Text'
 
 import { Context as UserContext } from '../../providers/User'
 
 const styles = StyleSheet.create({
-  SafeAreaView: {
+  SafeAreaView:{
     flex: 1,
-    justifyContent: 'flex-start',
-    alignItems: "center",
-    width: "100%",
-    maxHeight: Dimensions.get('window').height - 90,
+    alignItems:"center",
+    width:Dimensions.get('window').width,
+    maxHeight: Dimensions.get('window').height - 75,
+    marginTop:StatusBar.currentHeight
   },
-  dashboard: {
-    flexDirection: "row",
-    alignSelf: "center",
-    justifyContent: "space-between",
-    width: "90%",
-    height: "8%",
-    alignItems: "center"
+  dashboard:{
+    minHeight:(Dimensions.get('window').height/2) - 140,
+    width:"90%",
+    maxWidth:"90%",
+    flexDirection:"column",
+    alignSelf:"center",
+    justifyContent:'center'
   },
-  resume: {
-    marginTop: 10,
-    flexDirection: "row",
-    width: "90%",
-    maxWidth: "90%",
-    height: 160,
-    alignSelf: "center",
-    alignItems: "center",
-    justifyContent: "space-between"
+  dashboardTitle:{
+    flexDirection:"row",
+    alignSelf:"center",
+    justifyContent:"space-between", 
+    alignItems:"center",
+    width:"100%",
   },
-  devicesContainer: {
-    marginTop: 10,
-    backgroundColor: "#f4f5fa",
-    height: "100%",
-    borderRadius: 25
+  resume:{
+    alignItems:"flex-end"
+
   },
-  devices: {
-    flexDirection: "row",
-    width: '90%',
-    alignSelf: "center",
-    justifyContent: "space-between",
-    flexWrap: "wrap"
+  devicesContainer:{
+    backgroundColor:"#f4f5fa", 
+    minHeight:(Dimensions.get('window').height * 0.555) , 
+    borderTopEndRadius:25,
+    borderTopStartRadius:25
+  },
+  devices:{
+    flexDirection:"row", 
+    width:'90%', 
+    alignSelf:"center", 
+    justifyContent:"space-between", 
+    flexWrap:"wrap"
   }
 })
 
@@ -55,74 +55,102 @@ export default class Overview extends React.Component {
   }
   static contextType = UserContext
 
-  render() {
+  render(){
     const { navigation } = this.props
     const user = this.context
     const { devices } = user
-
+    const dataPieChart = [
+      {
+        name: "Ar condicionado",
+        consumption: 21,
+        color: "#F3A40C",
+        legendFontColor: "#7F7F7F",
+        legendFontSize: normalizeFontSize(17)
+      },
+      {
+        name: "Microondas",
+        consumption: 12,
+        color: "#1AA5B8",
+        legendFontColor: "#7F7F7F",
+        legendFontSize: normalizeFontSize(17)
+      },
+      {
+        name: "Forno Eletrico",
+        consumption: 28.20,
+        color: "#FF705E",
+        legendFontColor: "#7F7F7F",
+        legendFontSize: normalizeFontSize(17)
+      },
+      {
+        name: "Geladeira",
+        consumption: 8.20,
+        color: "#b7b7b7",
+        legendFontColor: "#7F7F7F",
+        legendFontSize: normalizeFontSize(17)
+      },
+      {
+        name: "Outros",
+        consumption: 8.20,
+        color: "#9510AC",
+        legendFontColor: "#7F7F7F",
+        legendFontSize: normalizeFontSize(17)
+      }
+  ]
     return (
       <SafeAreaView style={styles.SafeAreaView}>
-
-        {devices != "" ? (
-          <ScrollView
-            style={{
-              backgroundColor: "white",
-              width: "100%",
-            }}
-
-          >
-            <View style={{ width: "100%", height: "100%", }}>
-              <View style={styles.dashboard}>
-                <Text style={{ fontWeight: "bold", fontSize: 17 }}>
-                  Dashboard
-                </Text>
+        { devices != "" ? (
+        <ScrollView 
+          style={{
+            backgroundColor: "white",
+            width:"100%",
+          }}
+        >
+          <View style={{width:"100%", height:"100%",}}>
+            <View style={styles.dashboard}>
+              <View style={styles.dashboardTitle}>
+                <Text.Title fontSize={19} style={{ fontWeight:"bold" }}>
+                      R$ 1500,00
+                </Text.Title>
                 <Picker
                   selectedValue={"semana"}
-                  style={{ width: 158, color: "black" }}
+                  style={{width:158, color:"black"}}
                   onValueChange={(itemValue, itemIndex) =>
-                    this.setState({ filter: itemValue })
+                    this.setState({filter: itemValue})
                   }
                   mode="dropdown"
-                >
+                  >
                   <Picker.Item label="Esta semana" value="semana" />
                   <Picker.Item label="Este mês" value="mes" />
                 </Picker>
               </View>
               <View style={styles.resume}>
-                <PieChart devices={devices} />
-                <View style={{ flexDirection: "column", width: 140, height: 150, justifyContent: "center" }}>
-                  {devices.map((label) => (
-                    <View key={label.id} style={{ flexDirection: "row", height: 40, width: 110, marginBottom: 5, alignItems: 'center' }}>
-                      <Circle fill={label.color} style={{ marginRight: 10 }}/>
-                      <View style={{ flexDirection: "column" }}>
-                        <Text style={{ color: "black", fontSize: 16, fontWeight: "700" }}>
-                          48%
-                      </Text>
-                        <Text style={{ color: "grey" }}>
-                          {label.name}
-                        </Text>
-                      </View>
-                    </View>
-                  ))}
-                </View>
-              </View>
-              <View style={styles.devicesContainer}>
-                <Text style={{ paddingTop: 10, fontSize: 17, marginLeft: 20, fontWeight: "700" }}>
-                  Devices
-              </Text>
-                <View style={styles.devices}>
-                  {devices.map(device => (<Device
-                    key={device.id}
-                    name={device.name}
-                    color={device.color}
-                    onPress={() => navigation.navigate('DeviceInfo', { device })}
-                  />))}
-                </View>
+                <PieChart
+                  data={dataPieChart}
+                  width={Dimensions.get("screen").width}
+                  height={Dimensions.get("screen").height/4}
+                  chartConfig={{color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`}}
+                  accessor="consumption"
+                  backgroundColor="transparent"
+                />
               </View>
             </View>
-          </ScrollView>
-
-        ) : <Text>Nenhum dispositivo cadastrado</Text>}
+            <View style={styles.devicesContainer}>
+              <Text.Title fontSize={20} style={{paddingTop:10, marginLeft:20, fontWeight:"700"}}>
+                  Devices
+              </Text.Title>
+              <View style={styles.devices}> 
+                {devices.map(device => (<Device
+                  key={device.id}
+                  name={device.name}
+                  color={device.color}
+                  fontSize={normalizeFontSize(17)}
+                  onPress={() => navigation.navigate('DeviceInfo', { device })}
+                />))}
+              </View>
+            </View>
+          </View>
+        </ScrollView>
+        ) : <Text.Content>Nenhum dispositivo cadastrado</Text.Content>}
       </SafeAreaView>
     );
   }

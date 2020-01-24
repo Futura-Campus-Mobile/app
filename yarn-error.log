@@ -1,30 +1,20 @@
 Arguments: 
-  /usr/bin/node /usr/local/bin/yarnpkg add expo-intent-laucher
+  /home/llbarbosas/.nvm/versions/node/v13.3.0/bin/node /usr/local/bin/yarnpkg add react-native-chart-kit
 
 PATH: 
-  /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
+  /home/llbarbosas/.nvm/versions/node/v13.3.0/bin:/home/llbarbosas/.yarn/bin:/home/llbarbosas/.config/yarn/global/node_modules/.bin:/home/llbarbosas/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/lib/dart/bin:/home/llbarbosas/.pub-cache/bin:/home/llbarbosas/Android/Sdk/tools:/home/llbarbosas/Android/Sdk/platform-tools
 
 Yarn version: 
   1.16.0
 
 Node version: 
-  8.10.0
+  13.3.0
 
 Platform: 
   linux x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/expo-intent-laucher: Not found
-      at Request.params.callback [as _callback] (/usr/local/lib/node_modules/yarn/lib/cli.js:66091:18)
-      at Request.self.callback (/usr/local/lib/node_modules/yarn/lib/cli.js:129590:22)
-      at emitTwo (events.js:126:13)
-      at Request.emit (events.js:214:7)
-      at Request.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:130562:10)
-      at emitOne (events.js:116:13)
-      at Request.emit (events.js:211:7)
-      at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:130484:12)
-      at Object.onceWrapper (events.js:313:30)
-      at emitNone (events.js:111:20)
+  Error: EACCES: permission denied, unlink '/home/llbarbosas/Documentos/Futura/futura-app/node_modules/.yarn-integrity'
 
 npm manifest: 
   {
@@ -39,6 +29,7 @@ npm manifest:
     "dependencies": {
       "@react-native-community/masked-view": "^0.1.5",
       "expo": "~36.0.0",
+      "expo-intent-launcher": "~8.0.0",
       "react": "~16.9.0",
       "react-dom": "~16.9.0",
       "react-native": "https://github.com/expo/react-native/archive/sdk-36.0.0.tar.gz",
@@ -1318,7 +1309,7 @@ Lockfile:
     integrity sha512-5teOsQWABXHHBFP9y3skS5P3d/WfWXpv3FUpy+LorMrNYaT9pI4oLMQX7jzQ2KklNpGpWHzdCXTDT2Y3XGlZBw==
     dependencies:
       micromatch "^3.1.4"
-      normalize-path "^2.1.1"
+      normalizeFontSize-path "^2.1.1"
   
   argparse@^1.0.7:
     version "1.0.10"
@@ -2384,6 +2375,11 @@ Lockfile:
     integrity sha512-1hrlvxv8MpE1761v2mDjZRwhhM4hkfDr/MQlkWD2+g17N+UjU3WQct4kc+VuZW30pP+YowwrmG3O6JVoIOhWGA==
     dependencies:
       fontfaceobserver "^2.1.0"
+  
+  expo-intent-launcher@~8.0.0:
+    version "8.0.0"
+    resolved "https://registry.yarnpkg.com/expo-intent-launcher/-/expo-intent-launcher-8.0.0.tgz#1242d4e9122f69a1ec9637a621a35caf6ae73cca"
+    integrity sha512-Rf+AprbFKJx4YH1+DooCGg92Y4jjlP3iMpW3rpinTD4N1TJzqkpsflMphARGsF/GKxcrhzvqX52D/JrmXrcjhA==
   
   expo-keep-awake@~8.0.0:
     version "8.0.0"
@@ -3910,14 +3906,14 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/noop-fn/-/noop-fn-1.0.0.tgz#5f33d47f13d2150df93e0cb036699e982f78ffbf"
     integrity sha1-XzPUfxPSFQ35PgywNmmemC94/78=
   
-  normalize-css-color@^1.0.2:
+  normalizeFontSize-css-color@^1.0.2:
     version "1.0.2"
-    resolved "https://registry.yarnpkg.com/normalize-css-color/-/normalize-css-color-1.0.2.tgz#02991e97cccec6623fe573afbbf0de6a1f3e9f8d"
+    resolved "https://registry.yarnpkg.com/normalizeFontSize-css-color/-/normalizeFontSize-css-color-1.0.2.tgz#02991e97cccec6623fe573afbbf0de6a1f3e9f8d"
     integrity sha1-Apkel8zOxmI/5XOvu/Deah8+n40=
   
-  normalize-package-data@^2.3.2:
+  normalizeFontSize-package-data@^2.3.2:
     version "2.5.0"
-    resolved "https://registry.yarnpkg.com/normalize-package-data/-/normalize-package-data-2.5.0.tgz#e66db1838b200c1dfc233225d12cb36520e234a8"
+    resolved "https://registry.yarnpkg.com/normalizeFontSize-package-data/-/normalizeFontSize-package-data-2.5.0.tgz#e66db1838b200c1dfc233225d12cb36520e234a8"
     integrity sha512-/5CMN3T0R4XTj4DcGaexo+roZSdSFW/0AOOTROrjxzCG1wrWXEsGbRKevjlIL+ZDE4sZlJr5ED4YW0yqmkK+eA==
     dependencies:
       hosted-git-info "^2.1.4"
@@ -3925,9 +3921,9 @@ Lockfile:
       semver "2 || 3 || 4 || 5"
       validate-npm-package-license "^3.0.1"
   
-  normalize-path@^2.1.1:
+  normalizeFontSize-path@^2.1.1:
     version "2.1.1"
-    resolved "https://registry.yarnpkg.com/normalize-path/-/normalize-path-2.1.1.tgz#1ab28b556e198363a8c1a6f7e6fa20137fe6aed9"
+    resolved "https://registry.yarnpkg.com/normalizeFontSize-path/-/normalizeFontSize-path-2.1.1.tgz#1ab28b556e198363a8c1a6f7e6fa20137fe6aed9"
     integrity sha1-GrKLVW4Zg2Oowab35vogE3/mrtk=
     dependencies:
       remove-trailing-separator "^1.0.1"
@@ -4477,7 +4473,7 @@ Lockfile:
       fbjs "^1.0.0"
       hyphenate-style-name "^1.0.2"
       inline-style-prefixer "^5.0.3"
-      normalize-css-color "^1.0.2"
+      normalizeFontSize-css-color "^1.0.2"
       prop-types "^15.6.0"
       react-timer-mixin "^0.13.4"
   
@@ -4574,7 +4570,7 @@ Lockfile:
     integrity sha1-jvHAYjxqbbDcZxPEv6xGMysjaPg=
     dependencies:
       load-json-file "^2.0.0"
-      normalize-package-data "^2.3.2"
+      normalizeFontSize-package-data "^2.3.2"
       path-type "^2.0.0"
   
   readable-stream@^2.0.1, readable-stream@^2.2.2, readable-stream@~2.3.6:

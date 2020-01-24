@@ -14,7 +14,17 @@ export class Provider extends React.Component {
                 "name": "Ar condicionado",
                 "createdAt": 1578400358797,
                 "room": "Quarto",
-                "color": "#F3A40C"
+                "color": "#F3A40C",
+                "comsumption": [
+                    {
+                        time: { start: '24/01/20 às 8h', end: '24/01/20 às 9h' },
+                        kw: 12
+                    },
+                    {
+                        time: { start: '24/01/20 às 9h' },
+                        kw: 15
+                    }
+                ]
             },
             {
                 "id": 1,

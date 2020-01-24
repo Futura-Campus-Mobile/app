@@ -103,6 +103,7 @@ export default Welcome = ({ navigation }) => {
             props => (<View style={{ marginBottom: 30, paddingEnd: 30 }}>
                 <Text.Title style={{ fontSize: 27, marginBottom: 10 }}>Bem vindo ao Futura</Text.Title>
                 <Text.Content style={{ fontSize: 15 }}>
+
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                     sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
                 </Text.Content>
