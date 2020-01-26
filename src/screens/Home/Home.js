@@ -117,6 +117,8 @@ export default class Home extends React.Component {
                   <Draggable.Dropdown name={device.id} key={device.id} style={{ width: "50%", flexDirection: 'row' }}>
                     <Device
                       name={device.name}
+                      icon={device.icon}
+                      room={device.room}
                       connectedTo={user.deviceIsConnected(device.id)}
                       onPress={() => navigation.navigate('DeviceInfo', { device })}
                     />

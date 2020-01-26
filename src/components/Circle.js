@@ -9,6 +9,8 @@ export default Circle = ({ radius = 5, fill = 'black', style, ...props }) => (
             height: radius * 2,
             width: radius * 2,
             borderRadius: radius,
+            justifyContent: 'center',
+            alignItems: 'center',
             ...style
         }} />
 )

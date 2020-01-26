@@ -15,6 +15,7 @@ export class Provider extends React.Component {
                 "createdAt": 1578400358797,
                 "room": "Quarto",
                 "color": "#F3A40C",
+                "icon": "air-filter",
                 "comsumption": [
                     {
                         time: { start: '24/01/20 às 8h', end: '24/01/20 às 9h' },
@@ -29,6 +30,7 @@ export class Provider extends React.Component {
             {
                 "id": 1,
                 "name": "Forno elétrico",
+                "icon": "toaster-oven",
                 "createdAt": 1578400358797,
                 "room": "Cozinha",
                 "color": "#1AA5B8"
@@ -36,6 +38,15 @@ export class Provider extends React.Component {
             {
                 "id": 2,
                 "name": "Micro-ondas",
+                "icon": "microwave",
+                "color": "#FF705E",
+                "room": "Cozinha",
+                "createdAt": 1578400358920
+            },
+            {
+                "id": 3,
+                "name": "Geladeira",
+                "icon": "fridge",
                 "color": "#FF705E",
                 "room": "Cozinha",
                 "createdAt": 1578400358920
