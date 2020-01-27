@@ -22,6 +22,10 @@ const ThemeColors = {
         light: '#8e7af7',
         dark: '#8e7af7'
     },
+    headerSecondary: {
+        light: '#c0b4fc',
+        dark: '#c0b4fc'
+    },
     containerBackground: {
         light: '#eaeaea',
         dark: '#292859'

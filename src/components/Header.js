@@ -1,5 +1,6 @@
 import React from 'react'
 import { View, TouchableOpacity, Dimensions, StatusBar } from 'react-native'
+import { LinearGradient } from 'expo-linear-gradient' 
 
 import { useTheme } from '../providers/ThemeProvider'
 
@@ -22,14 +23,21 @@ export default Header = ({ title, goBack }) => {
                     position: 'absolute'
                 }}
             >
-                <View
-                    style={{
-                        backgroundColor: theme.headerPrimary,
-                        flexGrow: 1,
-                        borderBottomLeftRadius: 30,
-                        borderBottomRightRadius: 30
+                <View 
+                    style={{ 
+                        flexGrow: 1, 
+                        borderBottomRightRadius: 30, 
+                        borderBottomLeftRadius: 30, 
+                        overflow: 'hidden'
                     }}
-                />
+                >
+                    <LinearGradient
+                        colors={[theme.headerPrimary, theme.headerSecondary]}
+                        start={[0, 0]}
+                        end={[1, 1]}
+                        style={{ flexGrow: 1 }}
+                    />
+                </View>
                 <View
                     style={{
                         backgroundColor: '#efefef',

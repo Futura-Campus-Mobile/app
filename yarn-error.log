@@ -1,20 +1,30 @@
 Arguments: 
-  /home/llbarbosas/.nvm/versions/node/v13.3.0/bin/node /usr/local/bin/yarnpkg add react-native-chart-kit
+  /usr/bin/node /usr/local/bin/yarnpkg add expo-linear-gradient@~8.0.0
 
 PATH: 
-  /home/llbarbosas/.nvm/versions/node/v13.3.0/bin:/home/llbarbosas/.yarn/bin:/home/llbarbosas/.config/yarn/global/node_modules/.bin:/home/llbarbosas/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/lib/dart/bin:/home/llbarbosas/.pub-cache/bin:/home/llbarbosas/Android/Sdk/tools:/home/llbarbosas/Android/Sdk/platform-tools
+  /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
 
 Yarn version: 
   1.16.0
 
 Node version: 
-  13.3.0
+  8.10.0
 
 Platform: 
   linux x64
 
 Trace: 
-  Error: EACCES: permission denied, unlink '/home/llbarbosas/Documentos/Futura/futura-app/node_modules/.yarn-integrity'
+  Error: https://registry.yarnpkg.com/normalizeFontSize-path/-/normalizeFontSize-path-2.1.1.tgz: Request failed "404 Not Found"
+      at ResponseError.ExtendableBuiltin (/usr/local/lib/node_modules/yarn/lib/cli.js:696:66)
+      at new ResponseError (/usr/local/lib/node_modules/yarn/lib/cli.js:802:124)
+      at Request.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:66161:16)
+      at emitOne (events.js:116:13)
+      at Request.emit (events.js:211:7)
+      at Request.module.exports.Request.onRequestResponse (/usr/local/lib/node_modules/yarn/lib/cli.js:130467:10)
+      at emitOne (events.js:116:13)
+      at ClientRequest.emit (events.js:211:7)
+      at HTTPParser.parserOnIncomingClient (_http_client.js:551:21)
+      at HTTPParser.parserOnHeadersComplete (_http_common.js:115:23)
 
 npm manifest: 
   {
@@ -33,6 +43,7 @@ npm manifest:
       "react": "~16.9.0",
       "react-dom": "~16.9.0",
       "react-native": "https://github.com/expo/react-native/archive/sdk-36.0.0.tar.gz",
+      "react-native-chart-kit": "^4.4.1",
       "react-native-gesture-handler": "~1.5.0",
       "react-native-reanimated": "~1.4.0",
       "react-native-safe-area-context": "0.6.0",
@@ -4207,6 +4218,11 @@ Lockfile:
     dependencies:
       pify "^2.0.0"
   
+  paths-js@^0.4.10:
+    version "0.4.10"
+    resolved "https://registry.yarnpkg.com/paths-js/-/paths-js-0.4.10.tgz#a3575f409b4a36f8aa795ba4d051989021be58c7"
+    integrity sha512-JZoqlRSHtx+bc+xKI9o4bropEbqZBF4ZfYImiB1T9RYpHB73h5I8XZ7FfSBbHbBMtdD1c04ujjAPH8wUuu4+Gw==
+  
   pify@^2.0.0:
     version "2.3.0"
     resolved "https://registry.yarnpkg.com/pify/-/pify-2.3.0.tgz#ed141a6ac043a849ea588498e7dca8b15330e90c"
@@ -4257,6 +4273,11 @@ Lockfile:
       arr-diff "^1.0.1"
       arr-union "^2.0.1"
       extend-shallow "^1.1.2"
+  
+  point-in-polygon@^1.0.1:
+    version "1.0.1"
+    resolved "https://registry.yarnpkg.com/point-in-polygon/-/point-in-polygon-1.0.1.tgz#d59b64e8fee41c49458aac82b56718c5957b2af7"
+    integrity sha1-1Ztk6P7kHElFiqyCtWcYxZV7Kvc=
   
   posix-character-classes@^0.1.0:
     version "0.1.1"
@@ -4376,6 +4397,15 @@ Lockfile:
     version "3.0.4"
     resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
     integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
+  
+  react-native-chart-kit@^4.4.1:
+    version "4.4.1"
+    resolved "https://registry.yarnpkg.com/react-native-chart-kit/-/react-native-chart-kit-4.4.1.tgz#cb815ef4f25a781c97444384c7fa66626dc71a03"
+    integrity sha512-0J7gDLQNOy+e9FhW87OE8e38e3QF46YSX+crD3TKZ+tPO9+KRAezqVeY3L25i2gX8G4oL8tIBCl+Cz+oCav3eQ==
+    dependencies:
+      lodash "^4.17.13"
+      paths-js "^0.4.10"
+      point-in-polygon "^1.0.1"
   
   react-native-gesture-handler@~1.5.0:
     version "1.5.3"
