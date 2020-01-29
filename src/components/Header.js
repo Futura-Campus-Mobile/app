@@ -9,13 +9,15 @@ import Icon from 'react-native-vector-icons/MaterialIcons'
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
 
-export default Header = ({ title, goBack }) => {
+export default Header = ({ title, goBack, full=false }) => {
     const { theme } = useTheme()
+
+    const gradientViewStyle = full ? { height: HEIGHT } : { flexGrow: 1 }
 
     return (
         <View style={{ marginTop: StatusBar.currentHeight }}>
             <View
-                style={{
+                style={{    
                     flex: 1,
                     flexDirection: 'column',
                     height: HEIGHT,
@@ -35,7 +37,7 @@ export default Header = ({ title, goBack }) => {
                         colors={[theme.headerPrimary, theme.headerSecondary]}
                         start={[0, 0]}
                         end={[1, 1]}
-                        style={{ flexGrow: 1 }}
+                        style={gradientViewStyle}
                     />
                 </View>
                 <View
@@ -58,7 +60,7 @@ export default Header = ({ title, goBack }) => {
             </View>
             <View
                 style={{
-                    marginTop: !goBack && 50,
+                    marginTop: !goBack ? 50 : 0,
                     paddingHorizontal: 40,
                     paddingVertical: 10,
                 }}

@@ -11,8 +11,6 @@ const styles = StyleSheet.create({
   SafeAreaView:{
     flex: 1,
     alignItems:"center",
-    width:Dimensions.get('window').width,
-    maxHeight: Dimensions.get('window').height - 75,
     marginTop:StatusBar.currentHeight
   },
   dashboard:{

@@ -20,7 +20,7 @@ const withFontFamily = fontFamily => props => {
         <Text 
             {...props} 
             style={{ 
-                color: theme.primaryText, 
+                color: props.color || theme.primaryText, 
                 fontSize: normalizeFontSize(props.fontSize || 16), 
                 ...props.style, fontFamily
             }}
