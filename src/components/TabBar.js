@@ -151,11 +151,11 @@ export default class TabBar extends React.Component {
                         <Icon name={getCurrentMode().fabIconName} color={getCurrentMode().iconColor || '#fff'} size={40}></Icon>
                     </TouchableOpacity>
                     <BarButton
-                        iconName="person-outline"
-                        text="Profile"
+                        iconName="settings"
+                        text="Configs"
                         showText={isActiveRoute('Home')}
-                        selected={isActiveRoute('Profile')}
-                        onPress={() => navigation.navigate('Profile')}
+                        selected={isActiveRoute('Settings')}
+                        onPress={() => navigation.navigate('Settings')}
                     />
                 </Animated.View>
             </View>

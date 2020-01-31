@@ -8,7 +8,9 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@react-native-community/datetimepicker": "2.1.0",
     "@react-native-community/masked-view": "^0.1.5",
+    "@react-native-community/slider": "^2.0.8",
     "expo": "~36.0.0",
     "expo-intent-launcher": "~8.0.0",
     "expo-linear-gradient": "~8.0.0",

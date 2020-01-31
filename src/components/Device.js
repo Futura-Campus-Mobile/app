@@ -7,7 +7,12 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import Text from '../components/Text'
 import Circle from '../components/Circle'
 
-export default Device = ({ onPress, name = "", room, icon = "application", connectedTo }) => {
+const isOnColors = {
+    on: { primary: '#4FB247', secondary: '#E6FFE4' },
+    off: { primary: '#B24747', secondary: '#FFE4E4' },
+}
+
+export default Device = ({ onPress, name = "", room, icon = "application", connectedTo, isOn=true }) => {
     return (
         <View
             style={{
@@ -36,8 +41,8 @@ export default Device = ({ onPress, name = "", room, icon = "application", conne
                     }}
                 >
                     <Icon name={icon} size={35} />
-                    <Circle fill='#E6FFE4' radius={10}>
-                        <Circle fill='#4FB247' radius={4.5} />
+                    <Circle fill={isOnColors[isOn ? 'on' : 'off'].secondary} radius={10}>
+                        <Circle fill={isOnColors[isOn ? 'on' : 'off'].primary} radius={4.5} />
                     </Circle>
                 </View>
 

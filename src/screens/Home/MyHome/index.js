@@ -12,13 +12,13 @@ import Card from '../../../components/Card'
 
 import AddRoom from './AddRoom'
 import AddDevice from './AddDevice'
-import DeviceEdit from './DeviceEdit'
 
 export default class MyHome extends React.Component {
     static contextType = UserContext
 
     state = {
         rooms: this.context.getDevicesByRoom(),
+        updateRooms: () => this.setState({ rooms: this.context.getDevicesByRoom() }),
         removeRoom: index => this.setState({ rooms: [...this.state.rooms.filter((_, i) => i !== index)] }),
         addRoom: roomName => this.setState({ rooms: [...this.state.rooms, { name: roomName, devices: [] }] }),
 
@@ -28,9 +28,6 @@ export default class MyHome extends React.Component {
         currentRoomIndex: -1,
         getCurrentRoom: () => this.state.rooms[this.state.currentRoomIndex],
         setCurrentRoom: index => this.setState({ currentRoomIndex: index }),
-
-        currentDevice: {},
-        setCurrentDevice: device => this.setState({ currentDevice: device }),
 
         addDeviceToRoom: (device, roomId) => {
             const newRoom = this.state.rooms[roomId]
@@ -44,9 +41,9 @@ export default class MyHome extends React.Component {
 
     render() {
         const {
-            rooms, addRoom, getCurrentRoom, addDeviceToRoom,
-            setCurrentRoom, currentRoomIndex, currentDevice,
-            setCurrentDevice, removeRoom, modalVisible, setModalVisible
+            rooms, addRoom, getCurrentRoom, setCurrentRoom,
+            removeRoom, modalVisible, setModalVisible,
+            updateRooms
         } = this.state
         const { navigation } = this.props
 
@@ -105,19 +102,17 @@ export default class MyHome extends React.Component {
                                     <AddDevice
                                         defaultRoomDevices={getCurrentRoom() && getDefaultDevicesByRoom(getCurrentRoom().name)}
                                         currentRoom={getCurrentRoom()}
-                                        onAddDevice={device => {setCurrentDevice(device), setModalVisible('DeviceEdit')}}
+                                        onAddDevice={device => {
+                                            setModalVisible()
+                                            navigation.navigate('DeviceEdit', { 
+                                                device, 
+                                                room: getCurrentRoom().name,
+                                                onGoBack: () => {
+                                                    updateRooms()
+                                                }
+                                            })
+                                        }}
                                         close={() => setModalVisible()}
-                                    />
-                                </Modal>
-                                <Modal
-                                    animationType="slide"
-                                    transparent={true}
-                                    visible={modalVisible === 'DeviceEdit'}
-                                >
-                                    <DeviceEdit
-                                        close={() => setModalVisible()}
-                                        currentDevice={currentDevice}
-                                        onDeviceEdit={() => {addDeviceToRoom(currentDevice, currentRoomIndex), setModalVisible()}}
                                     />
                                 </Modal>
                             </>

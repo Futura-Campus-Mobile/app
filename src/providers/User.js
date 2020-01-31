@@ -13,6 +13,7 @@ export class Provider extends React.Component {
                 "id": 0,
                 "name": "Ar condicionado",
                 "createdAt": 1578400358797,
+                "isOn": true,
                 "room": "Quarto",
                 "color": "#F3A40C",
                 "icon": "air-filter",
@@ -34,6 +35,7 @@ export class Provider extends React.Component {
             {
                 "id": 1,
                 "name": "Forno elétrico",
+                "isOn": false,
                 "icon": "toaster-oven",
                 "createdAt": 1578400358797,
                 "room": "Cozinha",
@@ -52,6 +54,7 @@ export class Provider extends React.Component {
             {
                 "id": 2,
                 "name": "Micro-ondas",
+                "isOn": true,
                 "icon": "microwave",
                 "color": "#FF705E",
                 "room": "Cozinha",
@@ -71,6 +74,7 @@ export class Provider extends React.Component {
             {
                 "id": 3,
                 "name": "Geladeira",
+                "isOn": true,
                 "icon": "fridge",
                 "color": "#f4f5fa",
                 "room": "Cozinha",

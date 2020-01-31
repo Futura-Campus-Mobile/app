@@ -4,6 +4,9 @@ const firstMonthDay = (month, year) => new Date(year, month, 1)
 export const range = (n, start=0) => [...Array(n).keys()].map(v => v+start)
 export const byPeriod = (arr, n) => arr.filter((v, i) => i==0 || v%n==0)
 
+const withZero = (n) => n < 10 ? '0'+n : n
+export const toTimeString = date => `${withZero(date.getHours())}:${withZero(date.getMinutes())}`
+
 function monthWeeks(year, month) {
     const firstDay = firstMonthDay(month, year)
     const lastDay = lastMonthDay(month, year)
