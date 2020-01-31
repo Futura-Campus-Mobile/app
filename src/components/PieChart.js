@@ -1,50 +1,57 @@
 import React from 'react'
-import { PieChart } from 'react-native-svg-charts'
-import { View, Text, Dimensions } from 'react-native';
-import { Context as UserContext } from '../providers/User'
+import { StyleSheet, View, Dimensions } from 'react-native'
+import { PieChart } from "react-native-chart-kit"
+import Text, { normalizeFontSize } from './Text'
+import Circle from './Circle'
 
-export default class GeneralPieChart extends React.PureComponent {
-    constructor(props) {
-        super(props);
-    }
 
-    static contextType = UserContext
+export default class PieChartDeviceInfo extends React.Component {
+    render(){
+        const { height: HEIGHT, width: WIDTH } = Dimensions.get('window')
 
-    render() {
-        const { devices } = this.context
-        const data = devices.map((device)=>(
-            {
-                key: device.id,
-                value:50,
-                svg:{
-                    fill: device.color
-                }
+        const dataPieChart = [{
+            ...this.props.data, 
+            monthlyConsumption:this.props.monthlyConsumption, 
+            weeklyConsumption:this.props.weeklyConsumption
+        }]
+        const styles = StyleSheet.create({
+            resume: {
+                flexDirection: "column",
+                alignItems: "center",
             }
+        })
+        const PieChartLegend = ({name, value, color}) => (                  
+            <View style={{ flexDirection: "row", height: 30, marginBottom:18, width: "50%", borderRadius: 5, alignItems: "center", justifyContent: 'center' }}>
+            <Circle radius={6.5} fill={color}style={{ marginRight: 5 }} />
 
-        ))
-
-        const deviceWidth = Dimensions.get('window').width
-
+            <View style={{ flexDirection: 'column' }}>
+                <Text.Title fontSize={17}>
+                {name}
+            </Text.Title>
+                <Text.Info fontSize={17}>
+                {value}
+            </Text.Info>
+            </View>
+            </View>
+        )
         return (
-            <View style={{ justifyContent: 'center'}}>
+            <View style={styles.resume}>
                 <PieChart
-                    style={{ height: 150, minWidth:150 }}
-                    outerRadius={'100%'}
-                    innerRadius={55}
-                    data={data}
+                data={dataPieChart}
+                width={HEIGHT / 4}
+                height={HEIGHT / 4}
+                chartConfig={{ color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})` }}
+                accessor={this.props.selectedValue}
+                backgroundColor="transparent"
+                absolute
+                paddingLeft={40}
+                hasLegend={false}
                 />
-                <Text
-                    style={{
-                        position: 'absolute',
-                        left: deviceWidth/12 ,
-                        textAlign: 'center',
-                        fontWeight:"bold"
-                    }}
-                >
-                    Total: 180 R$
-                </Text>
+                <View style={{ flexDirection: "row", width: "80%", justifyContent: "space-between" }}>
+                <PieChartLegend name="Forno eletrico" value={`R$ ${this.props.selectedValue === "monthlyConsumption" ? this.props.monthlyConsumption : this.props.weeklyConsumption} `} color= "#F3A40C"/>
+                <PieChartLegend name="Outros" value="R$ 160,000"color= "#c4c4c4"/>
+                </View>
             </View>
         )
     }
-
 }

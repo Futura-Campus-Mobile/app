@@ -16,14 +16,18 @@ export class Provider extends React.Component {
                 "room": "Quarto",
                 "color": "#F3A40C",
                 "icon": "air-filter",
-                "comsumption": [
+                "consumption": [
                     {
-                        time: { start: '24/01/20 às 8h', end: '24/01/20 às 9h' },
+                        time: { start: new Date("2020-01-24T09:00"), end: new Date("2020-01-24T10:00") },
                         kw: 12
                     },
                     {
-                        time: { start: '24/01/20 às 9h' },
-                        kw: 15
+                        time: { start: new Date("2020-01-25T01:00"), end: new Date("2020-01-26T06:00") },
+                        kw: 12
+                    },
+                    {
+                        time: { start: new Date("2020-01-26T08:00"), end: new Date("2020-01-26T09:00") },
+                        kw: 14
                     }
                 ]
             },
@@ -33,7 +37,17 @@ export class Provider extends React.Component {
                 "icon": "toaster-oven",
                 "createdAt": 1578400358797,
                 "room": "Cozinha",
-                "color": "#1AA5B8"
+                "color": "#1AA5B8",
+                "consumption": [
+                    {
+                        time: { start: new Date("2020-01-24T08:00"), end: new Date("2020-01-26T09:00") },
+                        kw: 12
+                    },
+                    {
+                        time: { start: new Date("2020-01-26T09:00"), end: new Date("2020-01-26T10:00") },
+                        kw: 10
+                    }
+                ]
             },
             {
                 "id": 2,
@@ -41,15 +55,37 @@ export class Provider extends React.Component {
                 "icon": "microwave",
                 "color": "#FF705E",
                 "room": "Cozinha",
-                "createdAt": 1578400358920
+                "createdAt": 1578400358920,
+                "consumption": [
+                    {
+                        time: { start: new Date("2020-01-24T08:00"), end: new Date("2020-01-24T09:00") },
+
+                        kw: 4
+                    },
+                    {
+                        time: { start: new Date("2020-01-24T09:00"), end: new Date("2020-01-24T10:00") },
+                        kw: 3
+                    }
+                ]
             },
             {
                 "id": 3,
                 "name": "Geladeira",
                 "icon": "fridge",
-                "color": "#FF705E",
+                "color": "#f4f5fa",
                 "room": "Cozinha",
-                "createdAt": 1578400358920
+                "createdAt": 1578400358920,
+                "consumption": [
+                    {
+                        time: { start: new Date("2020-01-24T08:00"), end: new Date("2020-01-24T09:00") },
+
+                        kw: 16
+                    },
+                    {
+                        time: { start: new Date("2020-01-24T09:00"), end: new Date("2020-01-24T10:00") },
+                        kw: 10
+                    }
+                ]
             }
         ],
         plugs: [],

@@ -41,8 +41,7 @@ export default DeviceConsumtion = () => {
     )
 
     return (
-        <Card>
-            <Select />
+        <Card style={{marginHorizontal:0, marginVertical:0, marginBottom:-40}}>
 
             <LineChart
                 data={{
@@ -54,7 +53,7 @@ export default DeviceConsumtion = () => {
                 withInnerLines={false}
                 withOuterLines={false}
                 width={WIDTH-105}
-                height={220}
+                height={200}
                 yAxisLabel="R$"
                 chartConfig={{
                     backgroundColor: "#fff",
